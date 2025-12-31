@@ -1,0 +1,433 @@
+/* ==============================
+   0) SISTEMA / THEME
+================================= */
+:root {
+  --bg: #0f1512;
+  --surface: rgba(255,255,255,0.06);
+  --text: #ebf3ee;
+  --muted: #a8b5ad;
+
+  --primary: #39d98a;
+  --primary-600: #1fb874;
+  --accent: #b9ff66;
+
+  --radius: 18px;
+  --shadow-1: 0 10px 25px rgba(0,0,0,.25);
+  --shadow-2: 0 30px 60px rgba(0,0,0,.35);
+
+  --container: 1120px;
+
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --easespring: cubic-bezier(.16,1,.3,1);
+}
+
+@media (prefers-color-scheme: light) {
+  html[data-theme="light"] {
+    --bg: #f6f9f7;
+    --surface: rgba(15,21,18,0.06);
+    --text: #0f1512;
+    --muted: #47554d;
+
+    --shadow-1: 0 12px 28px rgba(16,24,20,.12);
+    --shadow-2: 0 30px 60px rgba(16,24,20,.16);
+  }
+}
+
+/* ==============================
+   1) RESET
+================================= */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  /* MISMO GRADIENTE EN MOBILE Y DESKTOP */
+  background:
+    radial-gradient(1200px 800px at 20% -10%, rgba(57,217,138,.25), transparent 60%),
+    radial-gradient(900px 700px at 110% 10%, rgba(185,255,102,.20), transparent 60%),
+    var(--bg);
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
+
+/* Capa fija para que el degradé no “salte” en algunos móviles */
+body::before{
+  content:""; position:fixed; inset:-1px; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(1200px 800px at 20% -10%, rgba(57,217,138,.25), transparent 60%),
+    radial-gradient(900px 700px at 110% 10%, rgba(185,255,102,.20), transparent 60%);
+  opacity:.999; /* evita compresión de color en Android */
+}
+
+img { max-width: 100%; display: block; height: auto; }
+
+.container { width: min(100% - 2rem, var(--container)); margin-inline: auto; }
+
+a { color: inherit; text-decoration: none; }
+
+.scrollbar {
+  position: fixed; inset: env(safe-area-inset-top) auto auto 0;
+  height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  z-index: 999;
+}
+
+/* ==============================
+   2) HEADER
+================================= */
+.main-header {
+  position: sticky; top: 0; z-index: 90;
+  backdrop-filter: blur(10px);
+  background: color-mix(in lab, var(--bg) 78%, transparent);
+  border-bottom: 1px solid color-mix(in lab, var(--text) 10%, transparent);
+}
+.header-inner {
+  display: grid; grid-template-columns: 1fr auto auto; align-items: center;
+  gap: .75rem; padding: max(.65rem, env(safe-area-inset-top)) 0;
+}
+.logo { font-weight: 800; font-size: clamp(1.05rem, 2vw, 1.25rem); letter-spacing: .3px; }
+
+.main-nav {
+  display: flex; gap: .25rem; padding: .15rem;
+  background: color-mix(in lab, var(--surface) 55%, transparent);
+  border: 1px solid color-mix(in lab, var(--text) 12%, transparent);
+  border-radius: 999px;
+}
+.main-nav a {
+  display: inline-block; padding: .5rem .8rem; border-radius: 999px; color: var(--muted);
+  transition: color .2s var(--ease), background-color .2s var(--ease);
+}
+.main-nav a:hover, .main-nav a:focus-visible { color: var(--text); background: color-mix(in lab, var(--surface) 45%, transparent); }
+.main-nav .buy-link { color: var(--text); background: linear-gradient(90deg, var(--primary), var(--primary-600)); }
+
+/* ==============================
+   3) HERO
+================================= */
+.product-hero { position: relative; padding: clamp(2.2rem, 5vw, 6rem) 0; overflow: hidden; }
+.grid-container {
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(1.2rem, 3.5vw, 4rem); align-items: center;
+}
+.product-card {
+  position: relative; border-radius: calc(var(--radius) + 6px);
+  background: linear-gradient(180deg, color-mix(in lab, var(--surface) 60%, transparent), color-mix(in lab, var(--surface) 30%, transparent));
+  box-shadow: var(--shadow-2); padding: clamp(.8rem, 2.5vw, 1.75rem);
+  overflow: hidden; transform-style: preserve-3d;
+}
+.product-card::after {
+  content:""; position:absolute; inset:-40% -10% auto -10%;
+  height:120%; transform: rotate(15deg);
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.07) 40%, transparent 70%);
+}
+.card-glow { position:absolute; inset:auto -20% -30% -20%; height:60%;
+  background: radial-gradient(50% 60% at 50% 0%, rgba(57,217,138,.35), transparent 60%);
+  transform: translateZ(-40px); }
+.product-img { width: min(520px, 100%); margin-inline:auto; filter: drop-shadow(0 24px 34px rgba(0,0,0,.35)); transform: translateZ(50px); }
+
+.product-details h1 { margin: 0 0 .25rem 0; font-size: clamp(1.9rem, 5.5vw, 3.25rem); }
+.product-sub { color: var(--muted); margin-bottom: 1rem; }
+.product-description { color: var(--muted); max-width: 60ch; }
+
+.cta-row { display:flex; gap:.6rem; align-items:center; margin: 1.1rem 0; flex-wrap:wrap; }
+.cta-button{
+  display:inline-grid; place-items:center; padding: 12px 20px; border-radius:999px; font-weight:700; color:#0b1110;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  box-shadow: 0 12px 28px rgba(57,217,138,.25), 0 4px 10px rgba(0,0,0,.2);
+  transition: transform .25s var(--easespring), box-shadow .25s var(--ease);
+  position: relative; overflow: hidden;
+}
+.cta-button:hover { transform: translateY(-2px); }
+.cta-button .shine{ position:absolute; inset:0; transform: translateX(-120%);
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.45) 20%, transparent 40%); transition: transform .6s var(--ease);}
+.cta-button:hover .shine{ transform: translateX(120%); }
+
+.ghost-btn{
+  display:inline-grid; place-items:center; padding: 10px 14px; border-radius: 999px;
+  border: 1px solid color-mix(in lab, var(--text) 14%, transparent);
+  background: color-mix(in lab, var(--surface) 50%, transparent); color: var(--text);
+}
+
+.trust-list{ display:grid; grid-template-columns: repeat(3, auto); gap:.5rem 1rem; color: var(--muted); }
+
+.orb { position:absolute; filter: blur(48px); opacity:.55; pointer-events:none; mix-blend-mode: screen; }
+.orb-a{ width:480px; height:480px; left:-120px; top:-80px; background: radial-gradient(circle at 30% 30%, #39d98a, transparent 60%); }
+.orb-b{ width:520px; height:520px; right:-160px; top:30%; background: radial-gradient(circle at 70% 40%, #b9ff66, transparent 60%); }
+
+/* ==============================
+   4) TABS
+================================= */
+.tabs { position: relative; }
+.tab-buttons{
+  display:grid; grid-auto-flow:column; justify-content:start; gap:.25rem;
+  border-bottom:1px solid color-mix(in lab, var(--text) 12%, transparent);
+  margin-bottom:1rem; position:relative; overflow:auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width:none;
+}
+.tab-buttons::-webkit-scrollbar{ display:none; }
+.tab-btn{
+  appearance:none; border:0; background:transparent; cursor:pointer;
+  color:var(--muted); padding:.75rem .9rem; font-weight:600; border-radius:12px 12px 0 0;
+}
+.tab-btn.active, .tab-btn:hover{ color:var(--text); }
+.tab-indicator{
+  position:absolute; bottom:-1px; height:3px; width: var(--w, 100px); left: var(--x, 0px);
+  background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius:6px;
+  transition:left .35s var(--easespring), width .35s var(--easespring);
+}
+.tab-panel{ display:none; }
+.tab-panel.active{ display:block; }
+.grid-bullets{ display:grid; gap:.5rem; }
+.steps{ display:grid; gap:.5rem; }
+
+/* ==============================
+   5) PROCESO
+================================= */
+.process-section{
+  padding: clamp(2.2rem, 5vw, 5rem) 0;
+  background:
+    radial-gradient(900px 600px at -10% 30%, rgba(57,217,138,.09), transparent 60%),
+    radial-gradient(700px 500px at 110% 60%, rgba(185,255,102,.08), transparent 60%),
+    linear-gradient(180deg, color-mix(in lab, var(--surface) 40%, transparent), transparent 30%);
+}
+.process-head h2{ font-size: clamp(1.5rem, 4vw, 2.2rem); margin-bottom:.35rem; }
+
+.stepper{
+  list-style:none; display:flex; gap:.5rem; position:relative; padding: .9rem 0 1.4rem; margin:0 0 .6rem 0;
+  overflow:auto; -webkit-overflow-scrolling: touch; scrollbar-width:none;
+}
+.stepper::-webkit-scrollbar{ display:none; }
+.stepper-track{
+  position:absolute; left:0; right:0; top: calc(.9rem + 10px);
+  height:4px; background: color-mix(in lab, var(--surface) 70%, transparent);
+  border-radius:10px; overflow:hidden;
+}
+.stepper-progress{ display:block; height:100%; width: var(--progress, 0%); background: linear-gradient(90deg, var(--primary), var(--accent)); }
+.stepper-item{ position:relative; z-index:2; }
+.stepper-btn{
+  display:grid; grid-template-columns: 32px 1fr; align-items:center; gap:.45rem;
+  background: color-mix(in lab, var(--surface) 55%, transparent); border:1px solid color-mix(in lab, var(--text) 12%, transparent);
+  cursor:pointer; color:var(--muted); padding:.45rem .6rem; border-radius:999px; text-align:left;
+  transition: background-color .2s var(--ease), color .2s var(--ease);
+  white-space:nowrap;
+}
+.stepper-item.active .stepper-btn, .stepper-btn:hover{ color:var(--text); background: color-mix(in lab, var(--surface) 65%, transparent); }
+.step-index{
+  display:grid; place-items:center; height:32px; width:32px; border-radius:50%;
+  background: color-mix(in lab, var(--surface) 70%, transparent);
+  border:1px solid color-mix(in lab, var(--text) 12%, transparent); font-weight:800;
+}
+.step-label{ padding-right:.2rem; }
+
+.steps-grid{ display:grid; gap: clamp(1.1rem, 3vw, 2rem); }
+.step-card{
+  display:grid; gap:1rem; grid-template-columns: 1.05fr .95fr;
+  background: linear-gradient(180deg, color-mix(in lab, var(--surface) 60%, transparent), color-mix(in lab, var(--surface) 30%, transparent));
+  border:1px solid color-mix(in lab, var(--text) 12%, transparent);
+  border-radius: calc(var(--radius) + 6px);
+  padding: clamp(.9rem, 2.8vw, 1.5rem); box-shadow: var(--shadow-1);
+}
+.step-header h3{ margin:.25rem 0 .25rem; font-size: clamp(1.1rem, 3vw, 1.6rem); }
+.pill{
+  display:inline-grid; place-items:center; padding:.22rem .55rem; font-size:.82rem; border-radius:999px;
+  background: color-mix(in lab, var(--surface) 70%, transparent);
+  border:1px solid color-mix(in lab, var(--text) 12%, transparent);
+}
+.muted{ color:var(--muted); }
+
+.step-body{ display:grid; gap:.7rem; }
+.checklist{ display:grid; gap:.45rem; padding-left:1rem; }
+.checklist li{ list-style: "✓  "; }
+.step-hint{
+  padding:.7rem .9rem; border-radius:12px;
+  background: color-mix(in lab, var(--surface) 70%, transparent);
+  border:1px solid color-mix(in lab, var(--text) 12%, transparent);
+}
+
+.step-illustration{
+  position:relative; border-radius: calc(var(--radius) + 6px);
+  background: linear-gradient(180deg, color-mix(in lab, var(--surface) 60%, transparent), color-mix(in lab, var(--surface) 30%, transparent));
+  box-shadow: var(--shadow-2); padding: clamp(.6rem, 2vw, 1rem);
+  overflow:hidden; transform-style:preserve-3d;
+}
+.step-illustration .product-img{ width:min(460px, 100%); transform: translateZ(40px); }
+.step-actions{ display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.15rem; }
+
+.main-footer{
+  border-top:1px solid color-mix(in lab, var(--text) 12%, transparent);
+  padding: 2rem 0; color:var(--muted); position:relative;
+}
+.back-top{
+  position:absolute; right: clamp(1rem, 3vw, 2rem); top:50%; translate:0 -50%;
+  border:1px solid color-mix(in lab, var(--text) 12%, transparent);
+  background: color-mix(in lab, var(--surface) 70%, transparent);
+  height:36px; width:36px; border-radius:50%; display:grid; place-items:center;
+}
+
+/* ==============================
+   6) REVEAL
+================================= */
+.reveal{ opacity:0; transform: translateY(18px) scale(.98);
+  transition: opacity .6s var(--ease), transform .6s var(--easespring); will-change: transform, opacity; }
+.reveal.is-visible{ opacity:1; transform: translateY(0) scale(1); }
+
+/* ==============================
+   7) INTERACCIONES
+================================= */
+.tilt{ perspective: 1000px; }
+.magnetic{ position:relative; will-change: transform; }
+
+/* ==============================
+   8) RESPONSIVE
+================================= */
+@media (max-width: 980px){
+  .grid-container{ grid-template-columns: 1fr; }
+  .steps-grid{ gap: 1rem; }
+  .step-card{ grid-template-columns: 1fr; }
+  .trust-list{ grid-template-columns: 1fr 1fr; }
+  .main-nav .buy-link{ display:none; }
+}
+@media (max-width: 520px){
+  .container{ width: min(100% - 1.4rem, var(--container)); }
+  .cta-row{ flex-direction: column; align-items: stretch; }
+  .trust-list{ grid-template-columns: 1fr; }
+  .product-hero{ padding-top: calc(1.2rem + env(safe-area-inset-top)); }
+  .logo{ font-size:1.05rem; }
+}
+
+/* ==============================
+   9) ACCESIBILIDAD
+================================= */
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; animation: none !important; }
+}
+/* ==============================
+   10) ICONO THEME TOGGLE (Añadir al final)
+================================= */
+.theme-toggle {
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  width: 24px; /* Tamaño del icono */
+  height: 24px;
+  position: relative;
+  border-radius: 50%;
+  outline-offset: 4px;
+  /* Asegura que los iconos no se corten */
+  overflow: hidden;
+  /* Evita que se encoja en el header */
+  flex-shrink: 0; 
+}
+
+/* Contenedor para los pseudo-elementos (sol y luna) */
+.theme-toggle .sun,
+.theme-toggle .moon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  /* Usamos tus variables de animación */
+  transition: transform 0.5s var(--easespring), opacity 0.4s var(--ease);
+}
+
+/* === DIBUJAR EL SOL === */
+/* Círculo central */
+.theme-toggle .sun::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px; /* 10px de círculo */
+  height: 10px;
+  background: var(--text);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+/* Rayos (usando box-shadow) */
+.theme-toggle .sun::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.5px; /* Ancho del rayo */
+  height: 1.5px; /* Alto del rayo */
+  background: transparent;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  /* 8 rayos con box-shadow */
+  box-shadow: 
+    0 -10px var(--text), /* N */
+    0 10px var(--text),  /* S */
+    -10px 0 var(--text), /* W */
+    10px 0 var(--text),  /* E */
+    -7px -7px var(--text), /* NW */
+    7px -7px var(--text), /* NE */
+    -7px 7px var(--text), /* SW */
+    7px 7px var(--text);  /* SE */
+}
+
+/* === DIBUJAR LA LUNA === */
+/* La luna es un círculo con una sombra */
+.theme-toggle .moon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px; /* Tamaño de la luna */
+  height: 18px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  /* El 'mordisco' es una sombra */
+  box-shadow: inset -5px -2px 0 0 var(--text);
+}
+
+/* === ANIMACIÓN === */
+
+/* Por defecto (Dark Mode) */
+.theme-toggle .sun {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+.theme-toggle .moon {
+  transform: scale(0.6) rotate(90deg);
+  opacity: 0;
+}
+
+/* En Light Mode */
+html[data-theme="light"] .theme-toggle .sun {
+  transform: scale(0.6) rotate(-90deg);
+  opacity: 0;
+}
+html[data-theme="light"] .theme-toggle .moon {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+/* === THEME TOGGLE (SVG) === */
+.theme-toggle{
+  width:36px; height:36px; border-radius:50%;
+  border:1px solid color-mix(in lab, var(--text) 12%, transparent);
+  background: color-mix(in lab, var(--surface) 60%, transparent);
+  display:grid; place-items:center; cursor:pointer;
+  transition: transform .15s var(--ease), background-color .2s var(--ease);
+  position: relative; overflow: hidden;
+}
+.theme-toggle:active{ transform: scale(.96); }
+.theme-toggle .icon{
+  position:absolute; width:18px; height:18px; fill: var(--text);
+  transition: opacity .28s var(--ease), transform .28s var(--easespring);
+  inset:0; margin:auto;
+}
+/* Estado DARK por defecto */
+.theme-toggle .sun{ opacity:1; transform: scale(1) rotate(0deg); }
+.theme-toggle .moon{ opacity:0; transform: scale(.6) rotate(-90deg); }
+/* Estado LIGHT */
+html[data-theme="light"] .theme-toggle .sun{ opacity:0; transform: scale(.6) rotate(90deg); }
+html[data-theme="light"] .theme-toggle .moon{ opacity:1; transform: scale(1) rotate(0deg); }

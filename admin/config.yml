@@ -1,0 +1,62 @@
+backend:
+  name: git-gateway
+  branch: main # O 'master', revisa cómo se llama tu rama en GitHub
+
+media_folder: "image/uploads" # Las fotos nuevas irán aquí
+public_folder: "image/uploads"
+
+collections:
+  - name: "paginas"
+    label: "Páginas"
+    files:
+      - name: "inicio"
+        label: "Página de Inicio"
+        file: "datos/contenido.json"
+        fields:
+          # --- HERO ---
+          - label: "1. Sección Principal (Hero)"
+            name: "hero"
+            widget: "object"
+            collapsed: false
+            fields:
+              - {label: "Título Principal", name: "titulo", widget: "string", default: "Guía del Proceso"}
+              - {label: "Subtítulo", name: "subtitulo", widget: "string", default: "Claro · Secuencial · Repetible"}
+              - {label: "Descripción", name: "descripcion", widget: "text"}
+              - {label: "Imagen Principal", name: "imagen", widget: "image", required: false}
+
+          # --- TABS (Resumen, Materiales, Notas) ---
+          - label: "2. Información (Tabs)"
+            name: "info_tabs"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Pestaña Resumen"
+                name: "resumen"
+                widget: "object"
+                fields:
+                  - {label: "Título", name: "titulo", widget: "string"}
+                  - {label: "Texto", name: "texto", widget: "text"}
+              
+              - label: "Pestaña Materiales (Lista)"
+                name: "materiales"
+                widget: "list"
+                field: {label: "Item", name: "item", widget: "string"}
+
+              - label: "Pestaña Notas (Lista)"
+                name: "notas"
+                widget: "list"
+                field: {label: "Nota", name: "nota", widget: "string"}
+
+          # --- PASOS (Editamos los 5 pasos fijos) ---
+          - label: "3. Pasos del Proceso"
+            name: "pasos_lista"
+            widget: "list"
+            collapsed: true
+            fields:
+              - {label: "Título del Paso", name: "titulo", widget: "string"}
+              - {label: "Descripción Header", name: "descripcion", widget: "string"}
+              - label: "Checklist (Lista de tareas)"
+                name: "tareas"
+                widget: "list"
+                field: {label: "Tarea", name: "tarea", widget: "string"}
+              - {label: "Sugerencia/Tip", name: "tip", widget: "string", required: false}

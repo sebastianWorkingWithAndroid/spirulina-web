@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía del Proceso | Documentación</title>
+  
+  <link rel="stylesheet" href="css/style.css" />
+  
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+  <div class="scrollbar"></div>
+
+  <header class="main-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">PROCESO<span style="color:var(--primary)">.IO</span></a>
+
+      <nav class="main-nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#detalles">Detalles</a>
+        <a href="#proceso">Pasos</a>
+        <a href="#" class="buy-link">Comenzar</a>
+      </nav>
+
+      <button class="theme-toggle" aria-label="Cambiar tema">
+        <div class="sun"></div>
+        <div class="moon"></div>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="inicio" class="product-hero">
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+
+      <div class="container grid-container">
+        
+        <div class="product-details">
+          <p class="product-sub reveal" id="hero-subtitle">Claro · Secuencial · Repetible</p>
+          <h1 class="reveal" id="hero-title">Guía Maestra del Proceso</h1>
+          <p class="product-description reveal" id="hero-desc">
+            Esta es la estructura base. El contenido real se cargará automáticamente desde el CMS una vez lo configures. Sigue los pasos para el éxito.
+          </p>
+          
+          <div class="cta-row reveal">
+            <a href="#proceso" class="cta-button">
+              <span class="shine"></span>
+              Ver los Pasos
+            </a>
+            <a href="#detalles" class="ghost-btn">Más info</a>
+          </div>
+
+          <div class="trust-list reveal">
+            <small>✓ Verificado</small>
+            <small>✓ Actualizado</small>
+            <small>✓ Seguro</small>
+          </div>
+        </div>
+
+        <div class="product-card tilt reveal">
+          <div class="card-glow"></div>
+          <img src="image/producto.png" alt="Imagen Principal" class="product-img" id="hero-img" />
+        </div>
+
+      </div>
+    </section>
+
+    <section id="detalles" class="container">
+      <div class="tabs">
+        
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-target="#panel-resumen">Resumen</button>
+          <button class="tab-btn" data-target="#panel-materiales">Materiales</button>
+          <button class="tab-btn" data-target="#panel-notas">Notas</button>
+          <div class="tab-indicator"></div>
+        </div>
+
+        <div class="tab-panel active reveal" id="panel-resumen">
+          <h2 id="resumen-title">Panorama General</h2>
+          <p class="product-description" id="resumen-text">
+            Aquí aparecerá el resumen ejecutivo del proceso cargado desde tu panel de administración.
+          </p>
+        </div>
+
+        <div class="tab-panel reveal" id="panel-materiales">
+          <h3>Lo que necesitas</h3>
+          <ul class="grid-bullets" id="materiales-list">
+            <li>Elemento de ejemplo 1</li>
+            <li>Elemento de ejemplo 2</li>
+            <li>Elemento de ejemplo 3</li>
+          </ul>
+        </div>
+
+        <div class="tab-panel reveal" id="panel-notas">
+          <h3>Consideraciones</h3>
+          <ol class="steps" id="notas-list">
+            <li>Nota importante número 1.</li>
+            <li>Nota importante número 2.</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="proceso" class="process-section">
+      <div class="container">
+        
+        <div class="process-head reveal">
+          <span class="pill muted">El Flujo</span>
+          <h2>Ejecución Paso a Paso</h2>
+        </div>
+
+        <div class="stepper reveal">
+          <div class="stepper-track"><span class="stepper-progress"></span></div>
+          
+          <div class="stepper-item active"><button class="stepper-btn" onclick="scrollToStep('paso-1')"><span class="step-index">1</span><span class="step-label">Inicio</span></button></div>
+          <div class="stepper-item"><button class="stepper-btn" onclick="scrollToStep('paso-2')"><span class="step-index">2</span><span class="step-label">Preparar</span></button></div>
+          <div class="stepper-item"><button class="stepper-btn" onclick="scrollToStep('paso-3')"><span class="step-index">3</span><span class="step-label">Ejecutar</span></button></div>
+          <div class="stepper-item"><button class="stepper-btn" onclick="scrollToStep('paso-4')"><span class="step-index">4</span><span class="step-label">Revisar</span></button></div>
+          <div class="stepper-item"><button class="stepper-btn" onclick="scrollToStep('paso-5')"><span class="step-index">5</span><span class="step-label">Cierre</span></button></div>
+        </div>
+
+        <div class="steps-grid">
+
+          <article class="step-card reveal" id="paso-1">
+            <div class="step-content">
+              <div class="step-header">
+                <span class="pill">Paso 01</span>
+                <h3>Definición Inicial</h3>
+                <p class="muted">Configuración básica del entorno.</p>
+              </div>
+              <div class="step-body">
+                <ul class="checklist">
+                  <li>Tarea pendiente...</li>
+                  <li>Tarea pendiente...</li>
+                </ul>
+                <div class="step-hint">
+                  <strong>Tip:</strong> Sigue las instrucciones del CMS.
+                </div>
+              </div>
+            </div>
+            <div class="step-illustration tilt">
+              <img src="image/producto.png" alt="Ilustración paso 1" class="product-img">
+            </div>
+          </article>
+
+          <article class="step-card reveal" id="paso-2">
+            <div class="step-content">
+              <div class="step-header">
+                <span class="pill">Paso 02</span>
+                <h3>Preparación</h3>
+                <p class="muted">Recolección de datos.</p>
+              </div>
+              <div class="step-body">
+                <ul class="checklist">
+                  <li>Tarea pendiente...</li>
+                </ul>
+                <div class="step-hint"><strong>Tip:</strong> Revisa dos veces.</div>
+              </div>
+            </div>
+            <div class="step-illustration tilt">
+              <img src="image/producto.png" alt="Ilustración paso 2" class="product-img">
+            </div>
+          </article>
+
+          <article class="step-card reveal" id="paso-3">
+            <div class="step-content">
+              <div class="step-header">
+                <span class="pill">Paso 03</span>
+                <h3>Ejecución Principal</h3>
+                <p class="muted">El núcleo del trabajo.</p>
+              </div>
+              <div class="step-body">
+                <ul class="checklist">
+                  <li>Acción principal</li>
+                  <li>Validación inmediata</li>
+                </ul>
+                <div class="step-hint">Mantén la concentración.</div>
+              </div>
+            </div>
+            <div class="step-illustration tilt">
+              <img src="image/producto.png" alt="Ilustración paso 3" class="product-img">
+            </div>
+          </article>
+
+          <article class="step-card reveal" id="paso-4">
+            <div class="step-content">
+              <div class="step-header">
+                <span class="pill">Paso 04</span>
+                <h3>Control de Calidad</h3>
+                <p class="muted">Verificación de errores.</p>
+              </div>
+              <div class="step-body">
+                <ul class="checklist">
+                  <li>Test de estrés</li>
+                  <li>Corrección de bugs</li>
+                </ul>
+              </div>
+            </div>
+            <div class="step-illustration tilt">
+              <img src="image/producto.png" alt="Ilustración paso 4" class="product-img">
+            </div>
+          </article>
+
+          <article class="step-card reveal" id="paso-5">
+            <div class="step-content">
+              <div class="step-header">
+                <span class="pill">Paso 05</span>
+                <h3>Entrega Final</h3>
+                <p class="muted">Despliegue y documentación.</p>
+              </div>
+              <div class="step-body">
+                <ul class="checklist">
+                  <li>Empaquetado</li>
+                  <li>Envío al cliente</li>
+                </ul>
+                <div class="step-hint">¡Felicidades por terminar!</div>
+              </div>
+            </div>
+            <div class="step-illustration tilt">
+              <img src="image/producto.png" alt="Ilustración paso 5" class="product-img">
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="main-footer container">
+    <p>&copy; 2024 Proceso Digital. Todos los derechos reservados.</p>
+    <a href="#" class="back-top" aria-label="Volver arriba">↑</a>
+  </footer>
+
+  <script src="js/script.js"></script>
+
+  <script>
+    function scrollToStep(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  </script>
+
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

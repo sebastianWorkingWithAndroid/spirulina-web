@@ -1,0 +1,108 @@
+/* --- PALETA DE COLORES Y VARIABLES GLOBALES (TEMA OSCURO) --- */
+:root {
+    /* Colores primarios - mantendremos los acentos verdes */
+    --color-primary: #5cb85c;       /* Verde vibrante para acentos y CTA (más claro para el fondo oscuro) */
+    --color-primary-dark: #4cae4c;  /* Verde más oscuro para hover */
+    --color-secondary: #00bcd4;     /* Azul/Cyan para acentos adicionales o links */
+    
+    /* Colores de texto */
+    --color-text-dark: #e0e0e0;     /* Texto principal claro */
+    --color-text-light: #b0b0b0;    /* Texto secundario claro */
+    --color-heading: #ffffff;       /* Títulos claros */
+
+    /* Colores de fondo */
+    --color-background-light: #1a1a1a; /* Fondo principal oscuro */
+    --color-background-card: #2c2c2c; /* Fondo de tarjetas más oscuro */
+    --color-border: #444444;        /* Bordes sutiles en oscuro */
+
+    /* Sombra más sutil para el tema oscuro */
+    --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Ajustes específicos para elementos en tema oscuro si es necesario */
+.main-header {
+    background: var(--color-background-card);
+    box-shadow: var(--shadow-medium);
+}
+
+.main-nav a {
+    color: var(--color-text-dark);
+}
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--color-primary);
+}
+
+.theme-toggle {
+    background: var(--color-background-card);
+    border-color: var(--color-border);
+    color: var(--color-text-dark);
+}
+.theme-toggle:hover {
+    background: #444;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #303030 100%);
+}
+
+.hero-title .highlight::after {
+    background: rgba(var(--color-primary), 0.1); /* Ajuste para el color base */
+}
+
+.feature-card {
+    background: var(--color-background-card);
+    box-shadow: var(--shadow-light);
+}
+.feature-card:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.icon-wrapper {
+    box-shadow: 0 3px 10px rgba(var(--color-primary), 0.2);
+}
+
+.ingredients-section {
+    background: linear-gradient(to right, #2a2a2a, #3a3a3a);
+}
+
+.ingredients-text p, .ingredient-item {
+    color: var(--color-text-dark);
+}
+
+.visual-placeholder {
+    background: var(--color-background-card);
+    box-shadow: var(--shadow-medium);
+}
+
+.small-print {
+    color: var(--color-text-light);
+}
+
+.call-to-action-section {
+    background: var(--color-primary-dark); /* Un verde más oscuro para CTA en tema oscuro */
+}
+.call-to-action-section p {
+    color: var(--color-background-card);
+}
+
+.secondary-cta {
+    background: var(--color-background-card);
+    color: var(--color-primary);
+}
+.secondary-cta:hover {
+    background: #444;
+    color: var(--color-primary);
+}
+
+.main-footer {
+    background: #111;
+    border-top-color: #333;
+}
+.footer-links a, .footer-social a, .footer-bottom p {
+    color: #999;
+}
+.footer-links a:hover, .social-icons a:hover {
+    color: var(--color-primary);
+}
