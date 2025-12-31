@@ -1,1 +1,37 @@
-{}
+{
+  "hero": {
+    "titulo": "Titulo principal",
+    "subtitulo": "subtitulo",
+    "descripcion": "Descripcion",
+    "imagen": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/swv/swv06010/y/24.jpg"
+  },
+  "info_tabs": {
+    "resumen": {
+      "titulo": "titulo pestaña resumen",
+      "texto": "texto de la pestaña resumen"
+    },
+    "materiales": [
+      "material 1",
+      "material 2"
+    ],
+    "notas": [
+      "notas"
+    ]
+  },
+  "pasos_lista": [
+    {
+      "titulo": "paso 1",
+      "descripcion": "descripcion header",
+      "tip": "tip nota"
+    },
+    {
+      "titulo": "titulo paso 2",
+      "descripcion": "decripcion header",
+      "tareas": [
+        "tarea 1",
+        "tarea 2"
+      ],
+      "tip": "tio opcional"
+    }
+  ]
+}
